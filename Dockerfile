@@ -2,13 +2,13 @@ FROM bitnami/python:latest
 
 WORKDIR /src
 
-COPY ./reqirements /requirements
-COPY ./scripts /scripts
-COPY ./src .
+COPY /requirements /requirements
+COPY /scripts /scripts
+COPY /src .
 
-EXPOSE 8000
+EXPOSE "8000"
 
-RUN /py/bin/pip install -r /requirements/developer.txt
+RUN pip install -r /requirements/developer.txt
 
 RUN chmod -R +x /scripts && \
     mkdir -p /vol/web/static && \
@@ -21,4 +21,4 @@ RUN chmod -R +x /scripts && \
 ENV PATH="/scripts:/py/bin:$PATH"
 
 USER djad
-CMD ["run.sh"]
+CMD ["bash","/scripts/run.bash"]
