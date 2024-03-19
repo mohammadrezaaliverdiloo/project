@@ -1,4 +1,4 @@
-FROM bitnami/python:latest
+FROM python:alpine
 
 WORKDIR /src
 
