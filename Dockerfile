@@ -21,6 +21,9 @@ RUN chmod -R +x /scripts && \
 #ENV PATH="/scripts:/py/bin:$PATH"
 
 USER djad
+RUN python makemigrations && \
+    python migrate
+
 ENTRYPOINT ['python']
 
-CMD ["run.sh"]
+CMD ["./manage.py", "runserver", "0.0.0.0:8000"]
