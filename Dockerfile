@@ -18,7 +18,9 @@ RUN chmod -R +x /scripts && \
     chmod -R 755 /vol
 
 
-ENV PATH="/scripts:/py/bin:$PATH"
+#ENV PATH="/scripts:/py/bin:$PATH"
 
 USER djad
-CMD ["bash","/scripts/run.bash"]
+ENTRYPOINT ['python']
+
+CMD ["run.sh"]
