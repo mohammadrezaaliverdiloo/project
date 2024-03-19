@@ -1,12 +1,12 @@
-version: '3.9'
+version: '3.7'
 
 services:
   app:
     build:
       context: .
-    command: > 
-      bash -c "python manage.py migrate &&
-               python manage.py runsever 0.0.0.0:8000"
+    # command: > 
+    #   bash -c "python manage.py migrate &&
+    #            python manage.py runsever 0.0.0.0:8000"
     ports:
       - "8000:8000"
     volumes:
