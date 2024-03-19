@@ -3,7 +3,7 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 WORKDIR /src
 
-COPY /reqirements /requirements
+COPY /requirements /requirements
 COPY /scripts /scripts
 COPY /src .
 
