@@ -23,7 +23,7 @@ RUN chmod -R +x /scripts && \
     chown -R djad:djad /vol && \
     chmod -R 755 /vol
 
-CMD ["/scripts/run.sh"]
+CMD ["scripts/run.sh"]
 # ENV PATH="/scripts:/py/bin:$PATH"
 
 # USER djad
