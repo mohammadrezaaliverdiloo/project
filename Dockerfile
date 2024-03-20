@@ -22,8 +22,9 @@ RUN chmod -R +x /scripts && \
     adduser --disabled-password --no-create-home djad && \
     chown -R djad:djad /vol && \
     chmod -R 755 /vol
+ENV PATH="/scripts/usr/lib/python3.10/site-packages:$PATH"
 
-CMD ["scripts/run.sh"]
+CMD ["run.sh"]
 # ENV PATH="/scripts:/py/bin:$PATH"
 
 # USER djad
