@@ -8,12 +8,6 @@ COPY /scripts /scripts
 COPY /src .
 
 EXPOSE 8000
-RUN apk update && \
-    apk add --no-cache --virtual .build-deps \
-    ca-certificates gcc postgresql-dev linux-headers musl-dev \
-    libffi-dev jpeg-dev zlib-dev \
-    git bash
-
 RUN pip install -r /requirements/developer.txt
 
 RUN chmod -R +x /scripts && \
