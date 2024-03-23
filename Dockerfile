@@ -16,9 +16,12 @@ RUN chmod -R +x /scripts && \
     adduser --disabled-password --no-create-home djad && \
     chown -R djad:djad /vol && \
     chmod -R 755 /vol
-ENV PATH="/scripts:/usr/bin/python:$PATH"
 
-CMD run.sh
+CMD ["python","manage.py","runserver","0.0.0.0:8000"]
+
+# ENV PATH="/scripts:/usr/bin/python:$PATH"
+
+# CMD run.sh
 # ENV PATH="/scripts:/py/bin:$PATH"
 
 # USER djad
