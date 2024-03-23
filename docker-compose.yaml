@@ -9,9 +9,9 @@ services:
                  python manage.py runsever 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    # volumes:
-      # - ./src:/src
-      # - ./data/web:/vol/web
+    volumes:
+       - ./src:/src
+       - ./data/web:/vol/web
 
     depends_on:
       - db      
@@ -21,12 +21,12 @@ services:
     image: postgres:15.4
     ports:
       - "5342:5342"
-    # volumes:
-      # - djshop-data:/var/lib/postgresql/data
+    volumes:
+      - djshop-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=djshop
       - PSTGRES_USER=djad
       - POSTGRES_PASSWORD=p@SSW0RD
 
-# volumes:
-#   djshop-data:       
+volumes:
+  djshop-data:       
