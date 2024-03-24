@@ -28,7 +28,7 @@
 
 # # USER djad
 
-FROM python:3.10.2-slim-bullseye
+FROM python:3.11
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -39,6 +39,6 @@ WORKDIR /code
 COPY ./requirements /requirements
 COPY /scripts /scripts
 COPY /src .
-RUN pip install -r requirements/developer.txt
+RUN pip install -r /requirements/developer.txt
 
 COPY . .
