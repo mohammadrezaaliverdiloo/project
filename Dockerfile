@@ -10,10 +10,17 @@ ENV PYTHONUNBUFFERED 1
 COPY . $HOME
 RUN pip install --upgrade pip 
 RUN pip install -r ${HOME}/requirements/developer.txt 
+EXPOSE 8000
+RUN chmod -R +x /scripts && \
+    mkdir -p /vol/web/static && \
+    mkdir -p /vol/web/media && \
+    adduser --disabled-password --no-create-home djad && \
+    chown -R djad:djad /vol && \
+    chmod -R 755 /vol
 
-CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
+CMD ["${HOME}/scripts/run.sh"]
 
-
+# CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
 # FROM python:3.10-alpine
 # ENV LANG C.UTF-8
 # ENV LC_ALL C.UTF-8
