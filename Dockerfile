@@ -18,7 +18,7 @@ RUN chmod -R +x ${HOME}/scripts && \
     chown -R djad:djad ${HOME}/vol && \
     chmod -R 755 ${HOME}/vol
 
-CMD ["/scripts/run.sh"]
+CMD ["scripts/run.sh"]
 
 # CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
 # FROM python:3.10-alpine
