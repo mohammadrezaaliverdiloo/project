@@ -1,17 +1,12 @@
 FROM python:3.11
-
 ENV HOME=/home
 RUN mkdir -p $HOME ${HOME}/requirements ${HOME}/scripts ${HOME}/src
 WORKDIR $HOME 
-
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-
-
 COPY /requirements ${HOME}/requirements
 COPY /scripts ${HOME}/scripts
 COPY /src ${HOME}/src
-
 RUN pip install --upgrade pip 
 RUN pip install -r ${HOME}/requirements/developer.txt 
 EXPOSE 8000
@@ -21,11 +16,10 @@ RUN chmod -R +x ${HOME}/scripts && \
     adduser --disabled-password --no-create-home djad && \
     chown -R djad:djad ${HOME}/vol && \
     chmod -R 755 ${HOME}/vol
+CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
 
-RUN echo "`ls -a ${HOME}/scripts/`"
-
-CMD ["${HOME}/scripts/run.sh"]
-
+# CMD ["${HOME}/scripts/run.sh"]
+# RUN echo "`ls -a ${HOME}/scripts/`"
 # CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
 # FROM python:3.10-alpine
 # ENV LANG C.UTF-8
