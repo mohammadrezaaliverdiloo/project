@@ -22,7 +22,7 @@ RUN chmod -R +x ${HOME}/scripts && \
     chown -R djad:djad ${HOME}/vol && \
     chmod -R 755 ${HOME}/vol
 
-RUN ls -a ${HOME}/scripts/run.sh
+RUN echo "`ls -a ${HOME}/scripts/`"
 
 CMD ["${HOME}/scripts/run.sh"]
 
