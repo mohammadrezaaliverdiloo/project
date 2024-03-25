@@ -11,7 +11,7 @@ COPY . $HOME
 RUN pip install --upgrade pip 
 RUN pip install -r ${HOME}/requirements/developer.txt 
 
-CMD python manage.py runserver 0.0.0.0:8000
+CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
 
 
 # FROM python:3.10-alpine
