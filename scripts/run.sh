@@ -1,4 +1,4 @@
-#!/bin/sh/
+#!/bin/bash/
 
 python $Home/src/manage.py makemigrations
 python $Home/src/manage.py migrate
