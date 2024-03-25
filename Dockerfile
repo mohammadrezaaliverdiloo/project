@@ -11,12 +11,12 @@ COPY . $HOME
 RUN pip install --upgrade pip 
 RUN pip install -r ${HOME}/requirements/developer.txt 
 EXPOSE 8000
-RUN chmod -R +x /scripts && \
-    mkdir -p /vol/web/static && \
-    mkdir -p /vol/web/media && \
+RUN chmod -R +x ${HOME}/scripts && \
+    mkdir -p ${HOME}/vol/web/static && \
+    mkdir -p ${HOME}/vol/web/media && \
     adduser --disabled-password --no-create-home djad && \
-    chown -R djad:djad /vol && \
-    chmod -R 755 /vol
+    chown -R djad:djad ${HOME}/vol && \
+    chmod -R 755 ${HOME}/vol
 
 CMD ["${HOME}/scripts/run.sh"]
 
