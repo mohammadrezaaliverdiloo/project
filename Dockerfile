@@ -1,7 +1,7 @@
 FROM python:3.11
 
-ENV HOME=/home/app/
-RUN mkdir -p $HOME
+ENV HOME=/home/
+RUN mkdir -p $HOME ${HOME}/requirements ${HOME}/scripts ${HOME}/src
 WORKDIR $HOME 
 
 ENV PYTHONDONTWRITEBYTECODE 1
