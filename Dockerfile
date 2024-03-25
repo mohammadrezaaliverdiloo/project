@@ -1,3 +1,19 @@
+FROM python:3.11
+
+ENV HOME=/home/app/
+RUN mkdir -p $HOME
+WORKDIR $HOME 
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+COPY . $HOME
+RUN pip install --upgrade pip 
+RUN pip install -r requirements/develpoer.txt 
+
+CMD python manage.py runserver 0.0.0.0:8000
+
+
 # FROM python:3.10-alpine
 # ENV LANG C.UTF-8
 # ENV LC_ALL C.UTF-8
@@ -28,17 +44,17 @@
 
 # # USER djad
 
-FROM python:3.11
+# FROM python:3.11
 
-ENV PIP_DISABLE_PIP_VERSION_CHECK 1
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONUNBUFFERED 1
 
-WORKDIR /code
+# WORKDIR /code
 
-COPY ./requirements /requirements
-COPY /scripts /scripts
-COPY /src .
-RUN pip install -r /requirements/developer.txt
+# COPY ./requirements /requirements
+# COPY /scripts /scripts
+# COPY /src .
+# RUN pip install -r /requirements/developer.txt
 
-COPY . .
+# COPY . .

@@ -1,3 +1,15 @@
+version: "3"
+
+services:
+  simple_app:
+    # image: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
+    build:
+      context: .
+    environment:
+      DEBUG: $DEBUG
+    ports:
+      - 8001:8000
+
 # # version: '3.7'
 
 # # services:
@@ -59,12 +71,12 @@
 
 # volumes:
 #   postgres_data:
-version: "3.9"
+# version: "3.9"
 
-services:
-  web:
-    build: .
-    volumes:
-      - .:/code
-    ports:
-      - 8000:8000
+# services:
+#   web:
+#     build: .
+#     volumes:
+#       - .:/code
+#     ports:
+#       - 8001:8000
