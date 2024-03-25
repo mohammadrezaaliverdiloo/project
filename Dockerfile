@@ -7,7 +7,11 @@ WORKDIR $HOME
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY . $HOME
+
+COPY /requirements ${HOME}/requirements
+COPY /scripts ${HOME}/scripts
+COPY /src ${HOME}/src
+
 RUN pip install --upgrade pip 
 RUN pip install -r ${HOME}/requirements/developer.txt 
 EXPOSE 8000
@@ -18,14 +22,16 @@ RUN chmod -R +x ${HOME}/scripts && \
     chown -R djad:djad ${HOME}/vol && \
     chmod -R 755 ${HOME}/vol
 
-CMD ["scripts/run.sh"]
+RUN ls -a ${HOME}/scripts/run.sh
+
+CMD ["${HOME}/scripts/run.sh"]
 
 # CMD python ${HOME}/src/manage.py runserver 0.0.0.0:8000
 # FROM python:3.10-alpine
 # ENV LANG C.UTF-8
 # ENV LC_ALL C.UTF-8
 # WORKDIR /src
-
+# COPY . $HOME
 # COPY /requirements /requirements
 # COPY /scripts /scripts
 # COPY /src /src/
