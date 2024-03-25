@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED 1
 
 COPY . $HOME
 RUN pip install --upgrade pip 
-RUN pip install -r requirements/develpoer.txt 
+RUN pip install -r ${HOME}/requirements/developer.txt 
 
 CMD python manage.py runserver 0.0.0.0:8000
 
