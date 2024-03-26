@@ -6,11 +6,11 @@ services:
     build:
       context: .
     environment:
-      DEBUG: $DEBUG
+      DEBUG: True
     ports:
       - 8001:8000
     depends_on:
-      -db  
+      - db  
 
   db:
     image: postgres:15.4
