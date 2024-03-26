@@ -23,7 +23,8 @@ services:
       - PSTGRES_USER=djad
       - POSTGRES_PASSWORD=p@SSW0RD
 
-
+volumes:
+  djshop-data:
 
 # # version: '3.7'
 
