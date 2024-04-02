@@ -21,4 +21,6 @@ class ProdoctSerializers(serializers.ModelSerializer):
             'prices','quantity','categories','colors'
             ]
         
+        
+        
       
