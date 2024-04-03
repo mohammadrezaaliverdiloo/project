@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-import datetime
+# import datetime
 
 
 from category.models import Category
 from warehouse.models import Quantity
 from brand.models import Brand
 from price.models import Price
+from manger import IsPoblished
 
 class Product(models.Model):
     class Status(models.TextChoices):
@@ -39,8 +40,9 @@ class Product(models.Model):
 
 
     def __str__(self):
-        return f"{name}-{brand}"
+        return f"{self.name}-{self.brand}"
     
+    objects =IsPoblished()
 
 
 
