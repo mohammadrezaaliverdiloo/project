@@ -30,7 +30,7 @@ class Product(models.Model):
     #image //create an image app 
     status = models.CharField(_("status"),choices=Status.choices,default=Status.IN_ACTIVE)
     date_created=models.DateTimeField(auto_now_add = True,verbose_name=_("created_at"))
-    date_modified=models.DateTimeField(add_time=True,verbose_name=_("modified_at"))
+    date_modified=models.DateTimeField(auto_now=True,verbose_name=_("modified_at"))
 
     class Meta:
         verbose_name="product"

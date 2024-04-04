@@ -13,7 +13,7 @@ class Category(models.Model):
     description = models.TextField(verbose_name=_('description'),help_text="description for category")
     status = models.Choices(verbose_name=_('status'),choices=CategoryStatus.choice,default=CategoryStatus.ACTIVE)
     created_at = models.DateTimeField(auto_now_add=True,verbose_name=_('create time'))
-    modified_at = models.DateTimeField(auto_add=True,verbose_name=_('modified time'))
+    modified_at = models.DateTimeField(auto_now=True,verbose_name=_('modified time'))
     # image =models.ForeignKey()
     
     def __str__(self):
