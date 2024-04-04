@@ -1,9 +1,11 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import DestroyAPIView
 
 from ..models import Brand
 from ..serializers.admin_serializer import BrandSerializer
+from ..local_permissions import IsSuperUser
 
 class BrandAdminView(APIView):
     """
@@ -28,7 +30,12 @@ class BrandAdminView(APIView):
             return Response(brand_serializer.data, status= status.HTTP_200_OK)
         return Response(brand_serializer.errors, status= status.HTTP_400_BAD_REQUEST)
     
-    def delete(self,request,pk):
-        brand= Brand.objects.get(pk= pk)
-        brand.delete()
-        return Response ({'message':'brand wad deleted'})
+    # def delete(self,request,pk):
+    #     brand= Brand.objects.get(pk= pk)
+    #     brand.delete()
+    #     return Response ({'message':'brand wad deleted'})
+    
+    class BrandDelete(DestroyAPIView):
+        permission_classes= [IsSuperUser]
+        queryset= Brand.objects.all()
+        serializer_class= BrandSerializer

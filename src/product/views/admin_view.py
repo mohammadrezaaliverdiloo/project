@@ -2,8 +2,10 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import authentication,permissions
+from rest_framework.generics import DestroyAPIView
 
 from ..serializer.admin_serializer import ProductSerializers
+from ..local_permissions import IsSuperUser
 from ..models import Product
 
 
@@ -50,12 +52,16 @@ class ProductView(APIView):
         return Response (product_serializer.errors,status= status.HTTP_400_BAD_REQUEST)
 
     
-    def delete(self,request,pk):
-        product = Product.object.get(pk= pk)
-        product.delete()
-        return Response({'messagw':'product delete'})
-        
-        
+    # def delete(self,request,pk):
+    #     product = Product.object.get(pk= pk)
+    #     product.delete()
+    #     return Response({'messagw':'product delete'})
+class DeletProduct(DestroyAPIView):
+    # def get_queryset(self,request,pk):
+    #     return super().get_queryset().filter(pk= pk)
+    permission_classes= [IsSuperUser]     
+    queryset= Product.objects.all()
+    serializer_class= ProductSerializers
         
         
         
