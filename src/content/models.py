@@ -19,3 +19,5 @@ class Content(models.Model):
     status= models.CharField(
         choices=ContentStatus.choices,default=ContentStatus.PUBLISHED,verbose_name=_("content"),help_text=_("write content")
                              )
+    created_at= models.DateTimeField(auto_now_add=True,verbose_name=_("create time"),help_text=_(" I Filled auotomaticly"))
+    modified_at= models.DateTimeField(auto_now=True,verbose_name=_("modified time"),help_text=_(" Fill me"))
